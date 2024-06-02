@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--AlertVC-->
+        <scene sceneID="k1w-dS-AUA">
+            <objects>
+                <viewController storyboardIdentifier="noticeVC" id="Fib-nQ-xWn" customClass="NVAlertVC" customModule="NVAlert" sceneMemberID="viewController">
+                    <view key="view" id="Dol-uH-OmZ">
+                        <rect key="frame" x="0.0" y="0.0" width="500" height="212"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <visualEffectView blendingMode="behindWindow" material="popover" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="TK5-ft-RTC">
+                                <rect key="frame" x="0.0" y="0.0" width="500" height="212"/>
+                                <subviews>
+                                    <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="glZ-s9-p3a">
+                                        <rect key="frame" x="383" y="13" width="104" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Primary" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="JBv-EB-QYu">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                        </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="fqc-j1-0xt"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="primaryButtonAction:" target="Fib-nQ-xWn" id="7Lo-3h-5v0"/>
+                                        </connections>
+                                    </button>
+                                    <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eMy-LR-df3">
+                                        <rect key="frame" x="281" y="13" width="104" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Secondary" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="JpX-k6-Rvu">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                        </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="WSV-2Y-d6r"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="secondaryButtonAction:" target="Fib-nQ-xWn" id="Eur-fz-Z7O"/>
+                                        </connections>
+                                    </button>
+                                    <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Cih-OK-f1X">
+                                        <rect key="frame" x="13" y="13" width="81" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Tertiary" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="zKJ-wZ-d63">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="tertiaryButtonAction:" target="Fib-nQ-xWn" id="1Kb-aK-Aua"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="glZ-s9-p3a" secondAttribute="bottom" constant="20" symbolic="YES" id="5rO-Qb-XXE"/>
+                                    <constraint firstItem="Cih-OK-f1X" firstAttribute="leading" secondItem="TK5-ft-RTC" secondAttribute="leading" constant="20" symbolic="YES" id="A7n-Sm-1ha"/>
+                                    <constraint firstItem="Cih-OK-f1X" firstAttribute="bottom" secondItem="eMy-LR-df3" secondAttribute="bottom" id="GBm-uq-pA7"/>
+                                    <constraint firstAttribute="bottom" secondItem="eMy-LR-df3" secondAttribute="bottom" constant="20" symbolic="YES" id="GWz-5e-H2n"/>
+                                    <constraint firstItem="glZ-s9-p3a" firstAttribute="leading" secondItem="eMy-LR-df3" secondAttribute="trailing" constant="12" symbolic="YES" id="Jqh-C4-dw4"/>
+                                    <constraint firstAttribute="bottom" secondItem="Cih-OK-f1X" secondAttribute="bottom" constant="20" symbolic="YES" id="RDP-uA-ti3"/>
+                                    <constraint firstAttribute="trailing" secondItem="glZ-s9-p3a" secondAttribute="trailing" constant="20" symbolic="YES" id="VBR-Q0-NzW"/>
+                                    <constraint firstAttribute="trailing" secondItem="glZ-s9-p3a" secondAttribute="trailing" constant="20" symbolic="YES" id="vR3-e8-l3i"/>
+                                    <constraint firstItem="eMy-LR-df3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Cih-OK-f1X" secondAttribute="trailing" constant="12" symbolic="YES" id="vb7-zi-S48"/>
+                                    <constraint firstAttribute="bottom" secondItem="glZ-s9-p3a" secondAttribute="bottom" constant="20" symbolic="YES" id="y7Q-UK-jiB"/>
+                                </constraints>
+                            </visualEffectView>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W3Q-oe-uSr">
+                                <rect key="frame" x="98" y="153" width="384" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="380" id="Qas-PU-3VH"/>
+                                </constraints>
+                                <textFieldCell key="cell" selectable="YES" title="This is the title of the notice window." id="lHK-Bt-Li3">
+                                    <font key="font" metaFont="systemBold" size="15"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tgD-Mg-YN4">
+                                <rect key="frame" x="98" y="127" width="384" height="16"/>
+                                <textFieldCell key="cell" selectable="YES" title="This is a slightly more expanded explanation." id="m3c-P9-gfK">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3DL-Vb-hLF">
+                                <rect key="frame" x="12" y="144" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="me9-6W-T16">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GQ7-OB-bDn">
+                                <rect key="frame" x="20" y="111" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="3LN-dA-F7M"/>
+                                    <constraint firstAttribute="width" constant="64" id="Ug6-65-gJ4"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="ocb-ea-QMS"/>
+                            </imageView>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0ra-hO-Hjb">
+                                <rect key="frame" x="98" y="70" width="384" height="42"/>
+                                <textFieldCell key="cell" selectable="YES" id="dlD-Jr-DXC">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <string key="title">Sometimes you need a really long explanation and in that case you can get a really, really long description here, along with, for example, various steps you can take. This allows for a lot of text to be displayed, yay!</string>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="W3Q-oe-uSr" firstAttribute="leading" secondItem="GQ7-OB-bDn" secondAttribute="trailing" constant="16" id="5jE-dU-EcP"/>
+                            <constraint firstItem="GQ7-OB-bDn" firstAttribute="top" secondItem="W3Q-oe-uSr" secondAttribute="top" constant="-3" id="9az-OF-bd6"/>
+                            <constraint firstItem="glZ-s9-p3a" firstAttribute="top" secondItem="0ra-hO-Hjb" secondAttribute="bottom" constant="30" id="Gho-MH-E5R"/>
+                            <constraint firstItem="GQ7-OB-bDn" firstAttribute="leading" secondItem="Dol-uH-OmZ" secondAttribute="leading" constant="20" symbolic="YES" id="Jy3-2p-Xfi"/>
+                            <constraint firstItem="0ra-hO-Hjb" firstAttribute="leading" secondItem="tgD-Mg-YN4" secondAttribute="leading" id="Q91-z5-Aru"/>
+                            <constraint firstAttribute="trailing" secondItem="TK5-ft-RTC" secondAttribute="trailing" id="R29-Ez-4Vr"/>
+                            <constraint firstItem="tgD-Mg-YN4" firstAttribute="trailing" secondItem="W3Q-oe-uSr" secondAttribute="trailing" id="Rvt-wQ-Qlu"/>
+                            <constraint firstAttribute="trailing" secondItem="W3Q-oe-uSr" secondAttribute="trailing" constant="20" symbolic="YES" id="Xke-N3-MQO"/>
+                            <constraint firstItem="W3Q-oe-uSr" firstAttribute="top" secondItem="Dol-uH-OmZ" secondAttribute="top" constant="40" id="Yxh-mG-9V4"/>
+                            <constraint firstItem="tgD-Mg-YN4" firstAttribute="leading" secondItem="W3Q-oe-uSr" secondAttribute="leading" id="cok-Hc-1yU"/>
+                            <constraint firstItem="TK5-ft-RTC" firstAttribute="top" secondItem="Dol-uH-OmZ" secondAttribute="top" id="dLM-3k-K3s"/>
+                            <constraint firstItem="0ra-hO-Hjb" firstAttribute="top" secondItem="tgD-Mg-YN4" secondAttribute="bottom" constant="15" id="dds-45-S0W"/>
+                            <constraint firstItem="0ra-hO-Hjb" firstAttribute="trailing" secondItem="tgD-Mg-YN4" secondAttribute="trailing" id="qSo-G9-3vT"/>
+                            <constraint firstAttribute="bottom" secondItem="TK5-ft-RTC" secondAttribute="bottom" id="rcu-CP-dZk"/>
+                            <constraint firstItem="TK5-ft-RTC" firstAttribute="leading" secondItem="Dol-uH-OmZ" secondAttribute="leading" id="sG1-PM-7OO"/>
+                            <constraint firstItem="tgD-Mg-YN4" firstAttribute="top" secondItem="W3Q-oe-uSr" secondAttribute="bottom" constant="10" id="xg1-yQ-wBh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="buttonPrimary" destination="glZ-s9-p3a" id="Jbe-0I-Vrm"/>
+                        <outlet property="buttonSecondary" destination="eMy-LR-df3" id="iTa-Yk-UTu"/>
+                        <outlet property="buttonTertiary" destination="Cih-OK-f1X" id="Q51-nr-umm"/>
+                        <outlet property="imageView" destination="GQ7-OB-bDn" id="6c1-kL-u33"/>
+                        <outlet property="labelDescription" destination="0ra-hO-Hjb" id="WFn-lY-hmQ"/>
+                        <outlet property="labelSubtitle" destination="tgD-Mg-YN4" id="fxm-4M-3cu"/>
+                        <outlet property="labelTitle" destination="W3Q-oe-uSr" id="QYO-gb-aQO"/>
+                        <outlet property="primaryButtonTopMargin" destination="Gho-MH-E5R" id="saQ-nQ-322"/>
+                    </connections>
+                </viewController>
+                <customObject id="KbB-Mj-PlN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="230" y="2267"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="Xsy-Ws-OsP">
+            <objects>
+                <windowController storyboardIdentifier="window" id="yFW-Ep-rS8" sceneMemberID="viewController">
+                    <window key="window" title="Notice" separatorStyle="none" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="alertPanel" frameAutosaveName="" titlebarAppearsTransparent="YES" toolbarStyle="unified" titleVisibility="hidden" id="1ff-Fi-MzV">
+                        <windowStyleMask key="styleMask" titled="YES" fullSizeContentView="YES"/>
+                        <rect key="contentRect" x="425" y="462" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+                        <view key="contentView" id="i7I-3l-Avl">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="yFW-Ep-rS8" id="zbW-GZ-m3U"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="Fib-nQ-xWn" kind="relationship" relationship="window.shadowedContentViewController" id="Iax-Bg-bFz"/>
+                    </connections>
+                </windowController>
+                <customObject id="dw0-2X-8Hj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-374" y="2267"/>
+        </scene>
+    </scenes>
+</document>
