@@ -13,8 +13,5 @@ let package = Package(
     targets: [
         .target(
             name: "NVAlert"),
-        .testTarget(
-            name: "NVAlertTests",
-            dependencies: ["NVAlert"]),
     ]
 )

@@ -26,20 +26,12 @@ open class NVAlertVC: NSViewController {
     open override func viewWillAppear() {
         imageView.image = NSApp.applicationIconImage
 
-        if actionSecondary == nil {
-            buttonSecondary.isHidden = true
-        }
-        if actionTertiary == nil {
-            buttonTertiary.isHidden = true
-        }
+        buttonSecondary.isHidden = actionSecondary == nil
+        buttonTertiary.isHidden = actionTertiary == nil
     }
 
     open override func viewDidAppear() {
         view.window?.makeFirstResponder(buttonPrimary)
-    }
-
-    deinit {
-        // print("deinit: \(String(describing: self)).\(#function)")
     }
 
     // MARK: Outlet Actions

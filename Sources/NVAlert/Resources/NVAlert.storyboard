@@ -73,7 +73,7 @@ Gw
                                     <constraint firstAttribute="bottom" secondItem="glZ-s9-p3a" secondAttribute="bottom" constant="20" symbolic="YES" id="y7Q-UK-jiB"/>
                                 </constraints>
                             </visualEffectView>
-                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W3Q-oe-uSr">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W3Q-oe-uSr">
                                 <rect key="frame" x="98" y="153" width="384" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="380" id="Qas-PU-3VH"/>
@@ -84,7 +84,7 @@ Gw
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tgD-Mg-YN4">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tgD-Mg-YN4">
                                 <rect key="frame" x="98" y="127" width="384" height="16"/>
                                 <textFieldCell key="cell" selectable="YES" title="This is a slightly more expanded explanation." id="m3c-P9-gfK">
                                     <font key="font" metaFont="system"/>
@@ -108,7 +108,7 @@ Gw
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="ocb-ea-QMS"/>
                             </imageView>
-                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0ra-hO-Hjb">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0ra-hO-Hjb">
                                 <rect key="frame" x="98" y="70" width="384" height="42"/>
                                 <textFieldCell key="cell" selectable="YES" id="dlD-Jr-DXC">
                                     <font key="font" metaFont="smallSystem"/>
