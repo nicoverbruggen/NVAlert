@@ -79,7 +79,7 @@ open class NVAlert {
      */
     @MainActor public func runModal() -> NSApplication.ModalResponse {
         if !Thread.isMainThread {
-            fatalError("You should always present alerts on the main thread!")
+            assertionFailure("Alerts should always be presented on the main thread")
         }
 
         NSApp.activate(ignoringOtherApps: true)
@@ -99,5 +99,24 @@ open class NVAlert {
      */
     @MainActor public func show() {
         _ = self.runModal()
+    }
+
+    /**
+     Shows the modal attached as a sheet to a given window.
+     Also gives you access to a completion handler to tackle the outcome of the modal.
+     */
+    @MainActor public func presentAsSheet(
+        attachedTo parentWindow: NSWindow,
+        completionHandler: ((NSApplication.ModalResponse) -> Void)? = nil
+    ) {
+        guard let alertWindow = windowController.window else {
+            assertionFailure("Alert window not available")
+            return
+        }
+
+        parentWindow.makeKeyAndOrderFront(nil)
+        parentWindow.beginSheet(alertWindow) { response in
+            completionHandler?(response)
+        }
     }
 }
