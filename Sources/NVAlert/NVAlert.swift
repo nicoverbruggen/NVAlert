@@ -100,19 +100,24 @@ open class NVAlert {
         }
 
         // Bring window to front
-        if let window = windowController.window {
-            window.collectionBehavior = [.participatesInCycle, .managed]
-            window.makeKeyAndOrderFront(nil)
-            window.setCenterPosition(offsetY: 70)
+        guard let window = windowController.window else {
+            fatalError("The window to display to NVAlert in is nil")
         }
 
-        // Show the modal
-        let response = NSApplication.shared.runModal(for: windowController.window!)
+        // Ensure the window is displayed in Mission Control
+        window.collectionBehavior = [.participatesInCycle, .managed]
 
-        // Close the window if it still exists
-        if let window = windowController.window {
-            windowController.window?.close()
-        }
+        // Ensure the window appears in front of others
+        window.makeKeyAndOrderFront(nil)
+
+        // Center the window
+        window.setCenterPosition(offsetY: 70)
+
+        // Finally, show the modal and wait for an outcome
+        let response = NSApplication.shared.runModal(for: window)
+
+        // If an outcome came but the window is not closed, close it
+        windowController?.window?.close()
 
         // Revert the activation policy
         if activationPolicy == .accessory {
