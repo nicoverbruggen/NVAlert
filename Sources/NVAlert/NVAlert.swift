@@ -77,30 +77,29 @@ open class NVAlert {
      Shows the modal and returns a ModalResponse.
      If you wish to simply show the alert and disregard the outcome, use `show`.
      */
-    @MainActor public func runModal(
-        attentionType: NSApplication.RequestUserAttentionType? = .informationalRequest
-    ) -> NSApplication.ModalResponse {
+    @MainActor public func runModal(urgency: NVAlertUrgency = .normalRequestAttention) -> NSApplication.ModalResponse {
         let activationPolicy = NSApp.activationPolicy()
 
         if !Thread.isMainThread {
             assertionFailure("Alerts should always be presented on the main thread")
         }
 
-        // Set the activation policy to .regular so we can bounce the dock icon
+        // Set the activation policy to .regular so we can see the icon
         if activationPolicy == .accessory {
             NSApp.setActivationPolicy(.regular)
         }
 
         // Should we request user attention?
-        if let attentionType {
-            NSApp.requestUserAttention(attentionType)
-        }
-
-        // Activate the app and bring window to front
-        if let attentionType, attentionType == .criticalRequest {
+        if urgency == .normalRequestAttention {
+            NSApp.requestUserAttention(.informationalRequest)
+        } else if urgency == .urgentRequestAttention {
+            NSApp.requestUserAttention(.criticalRequest)
+        } else if urgency == .alwaysBringToFront {
             NSApp.activate(ignoringOtherApps: true)
         }
 
+        // Bring window to front
+        windowController.window?.collectionBehavior = .canJoinAllSpaces
         windowController.window?.makeKeyAndOrderFront(nil)
         windowController.window?.setCenterPosition(offsetY: 70)
 
@@ -116,17 +115,19 @@ open class NVAlert {
     }
 
     /** Shows the modal and returns true if the user pressed the primary button. */
-    @MainActor public func didSelectPrimary() -> Bool {
-        return self.runModal() == .alertFirstButtonReturn
+    @MainActor public func didSelectPrimary(
+        urgency: NVAlertUrgency = .normalRequestAttention
+    ) -> Bool {
+        return self.runModal(urgency: urgency) == .alertFirstButtonReturn
     }
 
     /**
      Shows the modal and does not return anything.
      */
     @MainActor public func show(
-        attentionType: NSApplication.RequestUserAttentionType = .informationalRequest
+        urgency: NVAlertUrgency = .normalRequestAttention
     ) {
-        _ = self.runModal(attentionType: attentionType)
+        _ = self.runModal(urgency: urgency)
     }
 
     /**
