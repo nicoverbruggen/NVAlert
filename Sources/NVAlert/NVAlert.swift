@@ -111,7 +111,6 @@ open class NVAlert {
 
         // Close the window if it still exists
         if let window = windowController.window {
-            print("Window still exists, cleaning up")
             windowController.window?.close()
         }
 
