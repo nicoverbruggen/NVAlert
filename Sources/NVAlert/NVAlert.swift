@@ -97,7 +97,10 @@ open class NVAlert {
         }
 
         // Activate the app and bring window to front
-        NSApp.activate(ignoringOtherApps: true)
+        if let attentionType, attentionType == .criticalRequest {
+            NSApp.activate(ignoringOtherApps: true)
+        }
+
         windowController.window?.makeKeyAndOrderFront(nil)
         windowController.window?.setCenterPosition(offsetY: 70)
 
