@@ -99,9 +99,11 @@ open class NVAlert {
         }
 
         // Bring window to front
-        windowController.window?.collectionBehavior = .canJoinAllSpaces
-        windowController.window?.makeKeyAndOrderFront(nil)
-        windowController.window?.setCenterPosition(offsetY: 70)
+        if let window = windowController.window {
+            window.collectionBehavior = [.participatesInCycle, .managed]
+            window.makeKeyAndOrderFront(nil)
+            window.setCenterPosition(offsetY: 70)
+        }
 
         // Show the modal
         let response = NSApplication.shared.runModal(for: windowController.window!)
