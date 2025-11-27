@@ -17,26 +17,21 @@ NVAlert().withInformation(
     description: NSLocalizedString("lite_mode_explanation.description", nil)
 )
 .withPrimary(text: NSLocalizedString("generic.ok", nil))
-.show()
+.show(urgency: .bringToFront)
 ```
 
 ### Understanding urgency
 
-By default, `NVAlert` will show any modal with `NVAlertUrgency.normalRequestAttention`, which will display and bounce the Dock icon. You can change the urgency when displaying the modal:
-
-```
-NVAlert() // create your modal here
-.show(urgency: .none) // <--
-```
+You must set the `urgency` when attempting to display an alert.
 
 No matter what, presenting an alert will cause the Dock icon to appear (`NSApp.activationPolicy` becomes `.regular`), and the window will be visible in Mission Control.
 
 Here's how the urgency states differ:
 
 - `.none`: No attention is requested.
-- `.normalRequestAttention`: The Dock icon will bounce momentarily. **The default if not specified.**
+- `.normalRequestAttention`: The Dock icon will bounce momentarily.
 - `.urgentRequestAttention`: The Dock icon will bounce for a longer time.
-- `.alwaysBringToFront`: The application will be focused (become the foreground application) with `NSApp.activate(ignoringOtherApps: true)`. Use this with caution, because it can be perceived as annoying to users!
+- `.bringToFront`: The application will be focused (become the foreground application) with `NSApp.activate(ignoringOtherApps: true)`. May be necessary for applications that run in accessory mode (e.g. menu bar apps) if you don't want the modal to be immediately unfocused after user interaction with a menu.
 
 ### Additional buttons
 

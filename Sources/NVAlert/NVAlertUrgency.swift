@@ -6,18 +6,21 @@
 //
 
 public enum NVAlertUrgency {
-    /// This is low urgency.
-    /// The user will not be prompted for attention.
+    /// Use for background alerts.
+    /// No user attention is requested.
     case none
 
     /// The application requests attention.
-    /// The default for alerts.
+    /// Use for background alerts.
+    /// Requests user attention w/ `.informationalRequest`
     case normalRequestAttention
 
     /// The application urgently demands attention.
+    /// Use for background alerts.
+    /// Requests user attention w/ `.criticalRequest`
     case urgentRequestAttention
 
-    /// The application will steal focus.
-    /// Don't do this unless necessary!
-    case alwaysBringToFront
+    /// The application will be focused.
+    /// Use when immediate user interaction is expected.
+    case bringToFront
 }

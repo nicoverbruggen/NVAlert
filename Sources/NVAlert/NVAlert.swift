@@ -76,9 +76,7 @@ open class NVAlert {
      Shows the modal and returns a ModalResponse.
      If you wish to simply show the alert and disregard the outcome, use `show`.
      */
-    @MainActor public func runModal(
-        urgency: NVAlertUrgency = .normalRequestAttention
-    ) -> NSApplication.ModalResponse {
+    @MainActor public func runModal(urgency: NVAlertUrgency) -> NSApplication.ModalResponse {
         let activationPolicy = NSApp.activationPolicy()
 
         if !Thread.isMainThread {
@@ -95,7 +93,7 @@ open class NVAlert {
             NSApp.requestUserAttention(.informationalRequest)
         } else if urgency == .urgentRequestAttention {
             NSApp.requestUserAttention(.criticalRequest)
-        } else if urgency == .alwaysBringToFront {
+        } else if urgency == .bringToFront {
             NSApp.activate(ignoringOtherApps: true)
         }
 
@@ -128,18 +126,14 @@ open class NVAlert {
     }
 
     /** Shows the modal and returns true if the user pressed the primary button. */
-    @MainActor public func didSelectPrimary(
-        urgency: NVAlertUrgency = .normalRequestAttention
-    ) -> Bool {
+    @MainActor public func didSelectPrimary(urgency: NVAlertUrgency) -> Bool {
         return self.runModal(urgency: urgency) == .alertFirstButtonReturn
     }
 
     /**
      Shows the modal and does not return anything.
      */
-    @MainActor public func show(
-        urgency: NVAlertUrgency = .normalRequestAttention
-    ) {
+    @MainActor public func show(urgency: NVAlertUrgency) {
         _ = self.runModal(urgency: urgency)
     }
 
