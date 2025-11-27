@@ -20,6 +20,24 @@ NVAlert().withInformation(
 .show()
 ```
 
+### Understanding urgency
+
+By default, `NVAlert` will show any modal with `NVAlertUrgency.normalRequestAttention`, which will display and bounce the Dock icon. You can change the urgency when displaying the modal:
+
+```
+NVAlert() // create your modal here
+.show(urgency: .none) // <--
+```
+
+No matter what, presenting an alert will cause the Dock icon to appear (`NSApp.activationPolicy` becomes `.regular`), and the window will be visible in Mission Control.
+
+Here's how the urgency states differ:
+
+- `.none`: No attention is requested.
+- `.normalRequestAttention`: The Dock icon will bounce momentarily. **The default if not specified.**
+- `.urgentRequestAttention`: The Dock icon will bounce for a longer time.
+- `.alwaysBringToFront`: The application will be focused (become the foreground application) with `NSApp.activate(ignoringOtherApps: true)`. Use this with caution, because it can be perceived as annoying to users!
+
 ### Additional buttons
 
 The other chainable methods you can call are:

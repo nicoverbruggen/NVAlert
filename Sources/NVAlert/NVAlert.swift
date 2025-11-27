@@ -5,7 +5,6 @@ import Cocoa
 open class NVAlert {
 
     var windowController: NSWindowController!
-
     var noticeVC: NVAlertVC {
         return self.windowController.contentViewController as! NVAlertVC
     }
@@ -77,7 +76,9 @@ open class NVAlert {
      Shows the modal and returns a ModalResponse.
      If you wish to simply show the alert and disregard the outcome, use `show`.
      */
-    @MainActor public func runModal(urgency: NVAlertUrgency = .normalRequestAttention) -> NSApplication.ModalResponse {
+    @MainActor public func runModal(
+        urgency: NVAlertUrgency = .normalRequestAttention
+    ) -> NSApplication.ModalResponse {
         let activationPolicy = NSApp.activationPolicy()
 
         if !Thread.isMainThread {
@@ -107,6 +108,12 @@ open class NVAlert {
 
         // Show the modal
         let response = NSApplication.shared.runModal(for: windowController.window!)
+
+        // Close the window if it still exists
+        if let window = windowController.window {
+            print("Window still exists, cleaning up")
+            windowController.window?.close()
+        }
 
         // Revert the activation policy
         if activationPolicy == .accessory {
