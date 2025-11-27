@@ -77,16 +77,39 @@ open class NVAlert {
      Shows the modal and returns a ModalResponse.
      If you wish to simply show the alert and disregard the outcome, use `show`.
      */
-    @MainActor public func runModal() -> NSApplication.ModalResponse {
+    @MainActor public func runModal(
+        attentionType: NSApplication.RequestUserAttentionType? = .informationalRequest
+    ) -> NSApplication.ModalResponse {
+        let activationPolicy = NSApp.activationPolicy()
+
         if !Thread.isMainThread {
             assertionFailure("Alerts should always be presented on the main thread")
         }
 
-        NSApp.activate(ignoringOtherApps: true)
+        // Set the activation policy to .regular so we can bounce the dock icon
+        if activationPolicy == .accessory {
+            NSApp.setActivationPolicy(.regular)
+        }
 
+        // Should we request user attention?
+        if let attentionType {
+            NSApp.requestUserAttention(attentionType)
+        }
+
+        // Activate the app and bring window to front
+        NSApp.activate(ignoringOtherApps: true)
         windowController.window?.makeKeyAndOrderFront(nil)
         windowController.window?.setCenterPosition(offsetY: 70)
-        return NSApplication.shared.runModal(for: windowController.window!)
+
+        // Show the modal
+        let response = NSApplication.shared.runModal(for: windowController.window!)
+
+        // Revert the activation policy
+        if activationPolicy == .accessory {
+            NSApp.setActivationPolicy(.accessory)
+        }
+
+        return response
     }
 
     /** Shows the modal and returns true if the user pressed the primary button. */
@@ -97,8 +120,10 @@ open class NVAlert {
     /**
      Shows the modal and does not return anything.
      */
-    @MainActor public func show() {
-        _ = self.runModal()
+    @MainActor public func show(
+        attentionType: NSApplication.RequestUserAttentionType = .informationalRequest
+    ) {
+        _ = self.runModal(attentionType: attentionType)
     }
 
     /**
