@@ -101,8 +101,8 @@ open class NVAlert {
 
     /**
      Shows the modal and returns a ModalResponse.
-     You can also use `show` as an alias for this function if you want a discardable result.
      */
+    @discardableResult
     @MainActor public func runModal(urgency: NVAlertUrgency) -> NSApplication.ModalResponse {
         let activationPolicy = NSApp.activationPolicy()
 
@@ -158,11 +158,10 @@ open class NVAlert {
     }
 
     /**
-     Shows the modal and returns a discardable ModalResponse.
+     Shows the modal, and returns nothing.
      */
-    @discardableResult
-    @MainActor public func show(urgency: NVAlertUrgency) -> NSApplication.ModalResponse {
-        return self.runModal(urgency: urgency)
+    @MainActor public func show(urgency: NVAlertUrgency) {
+        _ = self.runModal(urgency: urgency)
     }
 
     /**
