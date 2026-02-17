@@ -21,6 +21,9 @@ open class NVAlert {
         return NVAlert()
     }
 
+    /**
+     Configures the primary action button in the modal.
+     */
     public func withPrimary(
         text: String,
         action: @MainActor @escaping (NVAlertVC) -> Void = { vc in
@@ -32,29 +35,53 @@ open class NVAlert {
         return self
     }
 
+    /**
+     Configures a secondary button next to the primary button.
+
+     Optional, and can be omitted if the condition is not met.
+     */
     public func withSecondary(
+        if condition: Bool = true,
         text: String,
         action: (@MainActor (NVAlertVC) -> Void)? = { vc in
             vc.close(with: .alertSecondButtonReturn)
         }
     ) -> Self {
+        if !condition {
+            return self
+        }
+
         self.noticeVC.buttonSecondary.title = text
         self.noticeVC.actionSecondary = action
         return self
     }
 
+    /**
+     Configures a tertiary button on the left.
+     Optional, and can be omitted if the condition is not met.
+     If no text is set, a .helpButton is displayed instead.
+     */
     public func withTertiary(
+        if condition: Bool = true,
         text: String = "",
         action: (@MainActor (NVAlertVC) -> Void)? = nil
     ) -> Self {
+        if !condition {
+            return self
+        }
+
         if text == "" {
             self.noticeVC.buttonTertiary.bezelStyle = .helpButton
         }
+
         self.noticeVC.buttonTertiary.title = text
         self.noticeVC.actionTertiary = action
         return self
     }
 
+    /**
+     Configures the text of the modal.
+     */
     public func withInformation(
         title: String,
         subtitle: String,
@@ -74,7 +101,7 @@ open class NVAlert {
 
     /**
      Shows the modal and returns a ModalResponse.
-     If you wish to simply show the alert and disregard the outcome, use `show`.
+     You can also use `show` as an alias for this function if you want a discardable result.
      */
     @MainActor public func runModal(urgency: NVAlertUrgency) -> NSApplication.ModalResponse {
         let activationPolicy = NSApp.activationPolicy()
@@ -131,10 +158,11 @@ open class NVAlert {
     }
 
     /**
-     Shows the modal and does not return anything.
+     Shows the modal and returns a discardable ModalResponse.
      */
-    @MainActor public func show(urgency: NVAlertUrgency) {
-        _ = self.runModal(urgency: urgency)
+    @discardableResult
+    @MainActor public func show(urgency: NVAlertUrgency) -> NSApplication.ModalResponse {
+        return self.runModal(urgency: urgency)
     }
 
     /**
