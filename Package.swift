@@ -12,6 +12,9 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "NVAlert"),
+            name: "NVAlert",
+            resources: [
+                .process("Resources")
+            ]),
     ]
 )
